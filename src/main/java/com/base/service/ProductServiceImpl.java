@@ -1,9 +1,9 @@
 package com.base.service;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 
 import com.base.entity.Product;
@@ -27,6 +27,13 @@ public class ProductServiceImpl implements ProductService {
 	public Optional<Product> getProductById(int pno) {
 		Optional<Product> findById = repo.findById(pno);
 		return findById;
+	}
+
+
+	@Override
+	public List<Product> SaveAllProducts(List<Product> list) {
+		List<Product> saveAll = repo.saveAll(list);
+		return saveAll;
 	}
 	
 }
