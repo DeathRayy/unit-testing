@@ -35,5 +35,25 @@ public class ProductServiceImpl implements ProductService {
 		List<Product> saveAll = repo.saveAll(list);
 		return saveAll;
 	}
+
+
+	@Override
+	public Product updateProduct(Product product) {
+		Product updatedProduct = repo.save(product);
+		return updatedProduct;
+	}
+
+
+	@Override
+	public void deleteProductById(int productNo) {
+		repo.deleteById(productNo);
+	}
+
+
+	@Override
+	public List<Product> findAllProduct() {
+		List<Product> allProducts = repo.findAll();
+		return allProducts;
+	}
 	
 }

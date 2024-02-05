@@ -12,4 +12,7 @@ public interface ProductService {
 	public Product SaveProduct(Product emp);
 	public Optional<Product> getProductById(int pno);
 	public List<Product> SaveAllProducts(List<Product> list);
+	public Product updateProduct(Product product);
+	public void deleteProductById(int productNo);
+	public List<Product> findAllProduct();
 }
