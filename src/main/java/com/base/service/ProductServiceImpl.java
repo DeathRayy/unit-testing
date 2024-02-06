@@ -53,6 +53,7 @@ public class ProductServiceImpl implements ProductService {
 	@Override
 	public List<Product> findAllProduct() {
 		List<Product> allProducts = repo.findAll();
+		
 		return allProducts;
 	}
 	
