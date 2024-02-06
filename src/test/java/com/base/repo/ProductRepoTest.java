@@ -57,9 +57,9 @@ public class ProductRepoTest {
 		Product savedProduct = repo.save(product);
 		log.info("deleteProductById_Test_Return_Empty: Saved product : "+savedProduct);
 		
-		repo.deleteById(3);
+		repo.deleteById(savedProduct.getProductNo());
 		
-		Optional<Product> productCheck = repo.findById(1);
+		Optional<Product> productCheck = repo.findById(savedProduct.getProductNo());
 		log.info("deleteProductById_Test_Return_Empty : product After delete"+productCheck);
 		Assertions.assertAll(()-> assertThat(productCheck).isEmpty());
 	}
@@ -115,6 +115,5 @@ public class ProductRepoTest {
 							()-> assertEquals(updateSaved.getProductName(), updateProduct.getProductName()),
 							()-> assertThat(updateSaved.getPrice()).isNotZero()
 							);
-		
 	}
 }
