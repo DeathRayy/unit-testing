@@ -9,6 +9,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.MethodOrderer.OrderAnnotation;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
@@ -19,6 +20,7 @@ import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabas
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 
 import com.base.entity.Product;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
@@ -33,12 +35,23 @@ public class ProductRepoTest {
 	@Autowired
 	private ProductRepo repo;
 	
+	private Product product;
+	private List<Product> ListOfProduct;
+	
+	@BeforeEach
+	public void init() {
+		product = new Product(1,"Loptop",10);
+		ListOfProduct = new ArrayList<Product>();
+		ListOfProduct.add(new Product(4,"Iphone",1_00_000));
+		ListOfProduct.add(new Product(2,"Tab",10000));
+		ListOfProduct.add(new Product(3,"Mobile",15000));
+	}
+	
 	@Test
 	@Order(1)
 	public void saveEmployee_Test() {
 		int count = (int) repo.count();
 		System.out.println("Count : "+count);
-		Product product = Product.builder().productName("Laptop").price(30_000).build();
 		
 		Product savedProduct = repo.save(product);
 		log.info("saveEmployee_Test: Saved product : "+savedProduct);
@@ -53,7 +66,6 @@ public class ProductRepoTest {
 	@Test
 	@Order(2)
 	public void deleteProductById_Test_Return_Empty() {
-		Product product = Product.builder().productName("Laptop").price(30_000).build();
 		Product savedProduct = repo.save(product);
 		log.info("deleteProductById_Test_Return_Empty: Saved product : "+savedProduct);
 		
@@ -68,37 +80,21 @@ public class ProductRepoTest {
 	@Test
 	@Order(3)
 	public void saveListOfProducts_Test_Return_size() {
-		Product p1 = Product.builder().productName("Laptop").price(30_000).build();
-		Product p2 = Product.builder().productName("Mobile").price(40_000).build();
-		Product p3 = Product.builder().productName("Iphone").price(55_000).build();
 		
-		List<Product> lisOfProducts = new ArrayList<Product>();
-		lisOfProducts.add(p1);
-		lisOfProducts.add(p2);
-		lisOfProducts.add(p3);
-		
-		List<Product> savedAllProducts = repo.saveAll(lisOfProducts);
+		List<Product> savedAllProducts = repo.saveAll(ListOfProduct);
 		log.info("saveListOfProducts_Test_Return_size: Saved list of product : "+savedAllProducts);
 		
 		Assertions.assertAll(
 							()-> assertNotNull(savedAllProducts),
-							()-> assertEquals(savedAllProducts.size(), lisOfProducts.size())
+							()-> assertEquals(savedAllProducts.size(), ListOfProduct.size())
 						);
 	}
 	
 	@Test
 	@Order(4)
 	public void updateProduct_Test() {
-		Product p1 = Product.builder().productName("Laptop").price(30_000).build();
-		Product p2 = Product.builder().productName("Mobile").price(40_000).build();
-		Product p3 = Product.builder().productName("Iphone").price(55_000).build();
 		
-		List<Product> lisOfProducts = new ArrayList<Product>();
-		lisOfProducts.add(p1);
-		lisOfProducts.add(p2);
-		lisOfProducts.add(p3);
-		
-		List<Product> savedAllProducts = repo.saveAll(lisOfProducts);
+		List<Product> savedAllProducts = repo.saveAll(ListOfProduct);
 		log.info("updateProduct_Test: Saved list of product : "+savedAllProducts);
 		
 		Product updateProduct = repo.findAll().get(1);

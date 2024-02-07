@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.base.entity.Product;
+import com.base.exception.FailedToSaveProduct;
 import com.base.service.ProductService;
 
 import io.swagger.v3.oas.annotations.Operation;
@@ -40,8 +41,8 @@ public class ProductController {
 	@ApiResponse(responseCode = "201", content = {@Content(mediaType = "application/json")})
 	public ResponseEntity<Product> persitProduct(@RequestBody Product prod) {
 		log.trace("Inside Save Product "+ prod);
-		Product saveProduct = service.SaveProduct(prod);
-		return new ResponseEntity<Product>(saveProduct, HttpStatus.CREATED);
+			Product saveProduct = service.SaveProduct(prod);
+			return new ResponseEntity<Product>(saveProduct, HttpStatus.CREATED);
 	}
 	
 	@GetMapping(value = "/get")

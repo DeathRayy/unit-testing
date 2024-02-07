@@ -37,7 +37,6 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import io.swagger.v3.oas.annotations.media.Content;
 
 @WebMvcTest
-@AutoConfigureMockMvc
 @ExtendWith(MockitoExtension.class)
 public class ControllorTest {
 	
@@ -54,12 +53,12 @@ public class ControllorTest {
 	
 	@BeforeEach
 	public void init() {
-		product = Product.builder().productNo(1).productName("Loptop").price(10).build();
+		product = new Product(1,"Loptop",10);
 		objectMapper = new ObjectMapper();
 		ListOfProduct = new ArrayList<Product>();
-		ListOfProduct.add(Product.builder().productNo(4).productName("Iphone").price(1_00_000).build());
-		ListOfProduct.add(Product.builder().productNo(2).productName("Tab").price(10000).build());
-		ListOfProduct.add(Product.builder().productNo(3).productName("Mobile").price(15000).build());
+		ListOfProduct.add(new Product(4,"Iphone",1_00_000));
+		ListOfProduct.add(new Product(2,"Tab",10000));
+		ListOfProduct.add(new Product(3,"Mobile",15000));
 	}
 	
 	@Test
