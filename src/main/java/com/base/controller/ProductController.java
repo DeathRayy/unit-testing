@@ -29,7 +29,6 @@ import lombok.extern.slf4j.Slf4j;
 
 @RestController
 @Data
-@Slf4j
 @Tag(description = "Main controller", name = "Main")
 public class ProductController {
 
@@ -40,7 +39,7 @@ public class ProductController {
 	@PostMapping(value="/save", consumes = "application/json", produces = "application/json")
 	@ApiResponse(responseCode = "201", content = {@Content(mediaType = "application/json")})
 	public ResponseEntity<Product> persitProduct(@RequestBody Product prod) {
-		log.trace("Inside Save Product "+ prod);
+		//log.trace("Inside Save Product "+ prod);
 			Product saveProduct = service.SaveProduct(prod);
 			return new ResponseEntity<Product>(saveProduct, HttpStatus.CREATED);
 	}
@@ -48,7 +47,7 @@ public class ProductController {
 	@GetMapping(value = "/get")
 	@Operation(description = "Get Product by Id")
 	public Optional<Product> getProductById(@RequestParam int no) {
-		log.trace("Inside getProductById "+ no);
+		//log.trace("Inside getProductById "+ no);
 		Optional<Product> productById = service.getProductById(no);
 		return productById;
 	}
@@ -63,7 +62,7 @@ public class ProductController {
 	@PostMapping(value="/saveall", consumes = "application/json", produces = "application/json")
 	@Operation(description = "Save all list of Products")
 	public ResponseEntity<List<Product>> saveAllProducts(@RequestBody List<Product> list){
-		log.trace("Inside saveAllProducts:  "+list);
+		//log.trace("Inside saveAllProducts:  "+list);
 		List<Product> saveAllProducts = service.SaveAllProducts(list);
 		return new ResponseEntity<List<Product>>(saveAllProducts, HttpStatus.CREATED);
 	}
