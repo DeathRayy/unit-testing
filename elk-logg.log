@@ -1,0 +1,13 @@
+2024-03-09T07:16:21.192+05:30  WARN 2856 --- [CRUD Ops with Junit] [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=1d5h15m53s833ms92µs100ns).
+2024-03-09T07:17:04.489+05:30  INFO 2856 --- [CRUD Ops with Junit] [RMI TCP Connection(59)-127.0.0.1] inMXBeanRegistrar$SpringApplicationAdmin : Application shutdown requested.
+2024-03-09T07:17:04.489+05:30  INFO 2856 --- [CRUD Ops with Junit] [RMI TCP Connection(58)-127.0.0.1] inMXBeanRegistrar$SpringApplicationAdmin : Application shutdown requested.
+2024-03-09T07:17:04.490+05:30  INFO 2856 --- [CRUD Ops with Junit] [RMI TCP Connection(62)-127.0.0.1] inMXBeanRegistrar$SpringApplicationAdmin : Application shutdown requested.
+2024-03-09T07:17:04.491+05:30  INFO 2856 --- [CRUD Ops with Junit] [RMI TCP Connection(63)-127.0.0.1] inMXBeanRegistrar$SpringApplicationAdmin : Application shutdown requested.
+2024-03-09T07:17:04.490+05:30  INFO 2856 --- [CRUD Ops with Junit] [RMI TCP Connection(56)-127.0.0.1] inMXBeanRegistrar$SpringApplicationAdmin : Application shutdown requested.
+2024-03-09T07:17:04.491+05:30  INFO 2856 --- [CRUD Ops with Junit] [RMI TCP Connection(57)-127.0.0.1] inMXBeanRegistrar$SpringApplicationAdmin : Application shutdown requested.
+2024-03-09T07:17:04.491+05:30  INFO 2856 --- [CRUD Ops with Junit] [RMI TCP Connection(61)-127.0.0.1] inMXBeanRegistrar$SpringApplicationAdmin : Application shutdown requested.
+2024-03-09T07:17:04.490+05:30  INFO 2856 --- [CRUD Ops with Junit] [RMI TCP Connection(60)-127.0.0.1] inMXBeanRegistrar$SpringApplicationAdmin : Application shutdown requested.
+2024-03-09T07:17:04.968+05:30  INFO 2856 --- [CRUD Ops with Junit] [RMI TCP Connection(60)-127.0.0.1] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-03-09T07:17:05.100+05:30  WARN 2856 --- [CRUD Ops with Junit] [RMI TCP Connection(60)-127.0.0.1] o.s.b.f.support.DisposableBeanAdapter    : Invocation of destroy method failed on bean with name 'inMemoryDatabaseShutdownExecutor': org.h2.jdbc.JdbcSQLNonTransientConnectionException: Database is already closed (to disable automatic closing at VM shutdown, add ";DB_CLOSE_ON_EXIT=FALSE" to the db URL) [90121-224]
+2024-03-09T07:17:05.103+05:30  INFO 2856 --- [CRUD Ops with Junit] [RMI TCP Connection(60)-127.0.0.1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-03-09T07:17:05.110+05:30  INFO 2856 --- [CRUD Ops with Junit] [RMI TCP Connection(60)-127.0.0.1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.

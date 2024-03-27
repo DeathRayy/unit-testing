@@ -4,6 +4,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.mockito.Mockito.doNothing;
 import static org.mockito.Mockito.when;
 
 import java.util.ArrayList;
@@ -109,9 +110,10 @@ public class ServiceTestCase {
 	}
 	
 	public void deleteByIdTest() {
+		
 		when(repo.findById(product.getProductNo())).thenReturn(Optional.ofNullable(product));
 		
-		assertAll(
+		Assertions.assertAll(
 					()->service.deleteProductById(product.getProductNo())
 				);
 	}
