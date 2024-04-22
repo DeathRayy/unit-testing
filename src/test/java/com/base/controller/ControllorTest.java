@@ -37,7 +37,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import io.swagger.v3.oas.annotations.media.Content;
 
 @WebMvcTest
-@ExtendWith(MockitoExtension.class)
+//@ExtendWith(MockitoExtension.class) Not required added in meta data of @WebMvcTest
 public class ControllorTest {
 	
 	@Autowired
