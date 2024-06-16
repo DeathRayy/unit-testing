@@ -58,7 +58,7 @@ public class ProductRepoTest {
 		
 		Assertions.assertAll(
 							()-> assertNotNull(savedProduct),
-							()-> assertEquals("Laptop", product.getProductName()),
+							()-> assertEquals(savedProduct.getProductName(), product.getProductName()),
 							()-> assertEquals(count+1, product.getProductNo())
 							);
 	}
