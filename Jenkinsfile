@@ -1,20 +1,21 @@
-pipeline {
-        agent none
-        stages {
-          stage("build & SonarQube analysis") {
-            agent any
-            steps {
-              withSonarQubeEnv('Unit-test-sonar') {
-                sh 'mvn clean package sonar:sonar'
-              }
-            }
-          }
-          stage("Quality Gate") {
-            steps {
-              timeout(time: 1, unit: 'HOURS') {
-                waitForQualityGate abortPipeline: true
-              }
-            }
-          }
+pipeline{
+  agent any
+  environment {
+  PATH = "/opt/maven/bin:$PATH"
+  }
+  stages{
+    stage('Build'){
+      steps{
+        sh "mvn clean install"
         }
+        }
+    stage('SonarQube analysis'){
+      steps{
+        withSonarQubeEnv('sonarqube'){
+          sh "mvn sonar:sonar"
       }
+    }
+   }
+  }        
+}
+      
