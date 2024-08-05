@@ -4,7 +4,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.mockito.Mockito.doNothing;
 import static org.mockito.Mockito.when;
 
 import java.util.ArrayList;
@@ -22,7 +21,6 @@ import org.mockito.junit.jupiter.MockitoExtension;
 
 import com.base.entity.Product;
 import com.base.repo.ProductRepo;
-import com.fasterxml.jackson.databind.ObjectMapper;
 
 @ExtendWith(MockitoExtension.class)
 public class ServiceTestCase {
@@ -50,7 +48,7 @@ public class ServiceTestCase {
 		
 		when(repo.save(Mockito.any(Product.class))).thenReturn(product);
 		
-		Product savedProduct = service.SaveProduct(product);
+		Product savedProduct = service.saveProduct(product);
 		Assertions.assertAll(
 							()-> assertThat(savedProduct).isNotNull()
 				);
@@ -89,7 +87,7 @@ public class ServiceTestCase {
 		
 		when(repo.saveAll(ListOfProduct)).thenReturn(ListOfProduct);
 		
-		List<Product> findAllProduct = service.SaveAllProducts(ListOfProduct);
+		List<Product> findAllProduct = service.saveAllProducts(ListOfProduct);
 		
 		Assertions.assertAll(
 					()->assertNotNull(findAllProduct),

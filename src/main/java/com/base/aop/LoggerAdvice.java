@@ -28,12 +28,12 @@ public class LoggerAdvice {
 		String mehtodName = pjp.getSignature().getName();
 		Object[] args = pjp.getArgs();
 		// When entering into method
-		log.info("Entered into class "+className+" method ()"+mehtodName +" with arguments "+mapper.writeValueAsString(args));
+		log.info("Entered into class {} method {} with arguments {}", className, mehtodName , mapper.writeValueAsString(args));
 		
 		Object proceed = pjp.proceed();
 		
 		// While leaving method
-		log.info("Leaving  class "+className+" method ()"+mehtodName +" with response "+mapper.writeValueAsString(proceed));
+		log.info("Leaving  class {} method (){} with response {}",className, mehtodName, mapper.writeValueAsString(proceed));
 		
 		return proceed;
 	}
