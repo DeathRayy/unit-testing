@@ -13,15 +13,9 @@ import java.util.List;
 import java.util.Optional;
 
 import org.hamcrest.CoreMatchers;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.ArgumentMatcher;
-import org.mockito.ArgumentMatchers;
-import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
@@ -33,8 +27,6 @@ import com.base.entity.Product;
 import com.base.service.ProductService;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-
-import io.swagger.v3.oas.annotations.media.Content;
 
 @WebMvcTest
 //@ExtendWith(MockitoExtension.class) Not required added in meta data of @WebMvcTest
@@ -64,7 +56,7 @@ public class ControllorTest {
 	@Test
 	public void saveProductTest() {
 		System.out.println("Product:"+product);
-		when(service.SaveProduct(product)).thenReturn(product);
+		when(service.saveProduct(product)).thenReturn(product);
 		
 		try {
 			mockMvc.perform(post("/save")
@@ -117,7 +109,7 @@ public class ControllorTest {
 	
 	@Test
 	public void saveAllProducts() {
-		when(service.SaveAllProducts(ListOfProduct)).thenReturn(ListOfProduct);
+		when(service.saveAllProducts(ListOfProduct)).thenReturn(ListOfProduct);
 		
 		try {
 			ResultActions perform = mockMvc.perform(post("/saveall")

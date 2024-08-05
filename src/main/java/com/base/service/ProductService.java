@@ -7,11 +7,11 @@ import org.springframework.stereotype.Service;
 
 import com.base.entity.Product;
 
-@Service
+@Service("productService")
 public interface ProductService {
-	public Product SaveProduct(Product emp);
+	public Product saveProduct(Product emp);
 	public Optional<Product> getProductById(int pno);
-	public List<Product> SaveAllProducts(List<Product> list);
+	public List<Product> saveAllProducts(List<Product> list);
 	public Product updateProduct(Product product);
 	public void deleteProductById(int productNo);
 	public List<Product> findAllProduct();
